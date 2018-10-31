@@ -3,8 +3,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 //process only when method id post
 if($method == 'POST')
 {
-	$requestBody = file_get_contents('php://input');
-	$json = json_decode($requestBody);
+	//$requestBody = file_get_contents('php://input');
+	//$json = json_decode($requestBody);
 	$json_url = "https://dev60887.service-now.com/api/289816/incidentcreate";
 		$username    = "admin";
     		$password    = "Avik.17.jan";
