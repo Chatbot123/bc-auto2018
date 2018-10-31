@@ -5,29 +5,28 @@ if($method == 'POST')
 {
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
-	
-	$sec = $json->queryResult->parameters->sec;
-	
-	
-	$nexttick=time()+$sec;
-	//echo $nexttick;
-	$active=true;
-	while ($active)
-	{
-    	if (time()>=$nexttick)
-   	 {
-        		$opts = array();
-			$opts['http'] = array();
-			$opts['http']['method']="GET";
-			$opts['http']['header']="Accept-language: en\r\n"."Cookie: foo=bar\r\n";
-			$t1=stream_context_create($opts);
+	$json_url = "https://dev60887.service-now.com/api/289816/incidentcreate";
+		$username    = "admin";
+    		$password    = "Avik.17.jan";
+		$ch      = curl_init( $json_url );
+    		$options = array(
+        	CURLOPT_SSL_VERIFYPEER => false,
+        	CURLOPT_RETURNTRANSFER => true,
+        	CURLOPT_USERPWD        => "{$username}:{$password}",
+        	CURLOPT_HTTPHEADER     => array( "Accept: application/json" ),
+    		);
+    		curl_setopt_array( $ch, $options );
+		$json = curl_exec( $ch );
+		//$someobj = json_decode($json,true);
 		
-			// Open the file using the HTTP headers set above
-			$test_file=file_get_contents("https://efashion-r.herokuapp.com/?appid=2d1e87e7-501b-410a-b365-98356344bd82", false, $t1);
-			
-			$file = json_decode($test_file);
-			$speech_data = $file->results->result->fulfillment->speech;
+		//	$speech_data = $file->results->result->fulfillment->speech;
        			// $nexttick=time()+10;
-		 $active=false;	
-    	}
+		// $active=false;	
+    	
 	}
+else
+{
+	echo "Method not allowed";
+}
+
+?>
