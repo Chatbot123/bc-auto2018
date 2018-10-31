@@ -1,8 +1,8 @@
 <?php
 $method = $_SERVER['REQUEST_METHOD'];
 //process only when method id post
-if($method == 'POST')
-{
+//if($method == 'POST')
+//{
 	$requestBody = file_get_contents('php://input');
 	$json = json_decode($requestBody);
 	$json_url = "https://dev60887.service-now.com/api/289816/incidentcreate";
@@ -24,9 +24,9 @@ if($method == 'POST')
 		// $active=false;	
     	
 	}
-else
-{
-	echo "Method not allowed";
-}
+//else
+//{
+	//echo "Method not allowed";
+//}
 
 ?>
