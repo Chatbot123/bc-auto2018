@@ -25,9 +25,9 @@ if($method == 'POST')
 		// $active=false;	
     	
 	}
-//else
-//{
-	//echo "Method not allowed";
-//}
+else
+{
+	echo "Method not allowed";
+}
 
 ?>
