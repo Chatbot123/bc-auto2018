@@ -9,7 +9,7 @@ if($method == 'POST')
     		$options = array(
 		CURLOPT_URL =>'https://dev60887.service-now.com/api/289816/incidentcreate',
         	CURLOPT_USERPWD        => "{$username}:{$password}",
-        	CURLOPT_HTTPHEADER     => array( "Accept: application/json" )
+        	CURLOPT_HTTPHEADER     => false
     		);
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
