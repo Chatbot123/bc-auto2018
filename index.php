@@ -5,7 +5,7 @@ if($method == 'POST')
 {
 //$requestBody = file_get_contents('php://input');
 	//$json = json_decode($requestBody);
-	---$json_url = "https://dev60887.service-now.com/api/289816/incidentcreate";
+	$json_url = "https://dev60887.service-now.com/api/289816/incidentcreate";
 		$username    = "admin";
     		$password    = "Avik.17.jan";
 		$ch      = curl_init( $json_url );
@@ -17,9 +17,9 @@ if($method == 'POST')
     		);
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
-	echo $json;
-		//$someobj = json_decode($json,true);
-		
+	//echo $json;
+		$someobj = json_decode($json,true);
+		echo $someobj;
 		//	$speech_data = $file->results->result->fulfillment->speech;
        			// $nexttick=time()+10;
 		// $active=false;	
