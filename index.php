@@ -14,8 +14,8 @@ if($method == 'POST')
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
 	//echo $json;
-	//	$someobj = json_decode($json,true);
-	//	echo $someobj;
+		$someobj = json_decode($json,true);
+		echo $someobj->fulfillmentText;
 		//	$speech_data = $file->results->result->fulfillment->speech;
        			// $nexttick=time()+10;
 		// $active=false;	
