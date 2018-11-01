@@ -12,8 +12,8 @@ if($method == 'POST')
         	CURLOPT_HTTPHEADER     => false
     		);
     		curl_setopt_array( $ch, $options );
-		$json = curl_exec( $ch );
-	echo $json;
+		curl_exec( $ch );
+	//echo $json;
 		//$someobj = json_decode($json,true);
 	//echo $someobj;
 		//$speech = $someobj->text;
