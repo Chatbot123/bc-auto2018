@@ -13,7 +13,8 @@ if($method == 'POST')
     		);
     		curl_setopt_array( $ch, $options );
 		$json = curl_exec( $ch );
-		//$someobj = json_decode($json,true);
+		$someobj = json_decode($json,true);
+	echo $someobj;
 		//$speech = $someobj->text;
 		
     	//$response = new \stdClass();
