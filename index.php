@@ -9,7 +9,7 @@ $printFields = array("short_description", "priority","Caller_id");
 
 
 
-$json = "{\"short_description\":\"My phone is rebooting again and again\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
+$json = "{\"short_description\":\"testing for automatic creation\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
 
 jsonQuery($instance, $username, $password, $table, "insert", $json);
 $res = getjsonQuery($instance, $username, $password, $table);
@@ -35,7 +35,7 @@ function jsonQuery($instance, $username, $password, $table, $action, $jsonInput)
 	    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonInput);
   }
-  
+  return;
 	  
 }
 function getjsonQuery($instance, $username, $password, $table)
