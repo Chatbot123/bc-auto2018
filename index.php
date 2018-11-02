@@ -32,7 +32,7 @@ $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":
 	  curl_close($curl);
 	  $json = json_decode($response);
 	 
-	echo $json->result->number;
+	echo $json->records[0]->number;
 
 /*$res = getjsonQuery($instance, $username, $password, $table);
 echo $res;
