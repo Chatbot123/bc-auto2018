@@ -36,7 +36,7 @@ echo $res;
 
 function getjsonQuery($instance, $username, $password, $table)
 {
-	  $query = "https://dev60887.service-now.com/incident.do?JSONv2&sysparm_query=ORDERBYDESCsys_created_on";
+	  $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_query=ORDERBYDESCsys_created_on";
 	  
 	  $curl = curl_init($query);
 
