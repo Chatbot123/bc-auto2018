@@ -15,15 +15,17 @@ if($method == 'POST')
 		{ $sh_desc = $json->queryResult->queryText; }
 
 		if(isset($json->queryResult->outputContexts[1]->parameters->name))
-		{ $username = $json->queryResult->outputContexts[1]->parameters->name; }
+		{ $name = $json->queryResult->outputContexts[1]->parameters->name; }
 
 		$sh_desc = strtolower($sh_desc);*/
+		$sh_desc = "Testing";
+		$name = "someone";
 		$instance = "dev60887";
 		$username = "admin";
 		$password = "Avik.17.jan";
 		$table = "incident";
 		//$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":\"someone\"}";
-		$jsonobj = "{\"short_description\":\"testing\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
+		$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":$name}";
 		$query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=insert";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
