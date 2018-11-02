@@ -11,14 +11,7 @@ $table = "incident";
 
 $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
 
-jsonQuery($instance, $username, $password, $table, "insert", $json);
-$res = getjsonQuery($instance, $username, $password, $table);
-//printRecord($res, $printFields);
-
-
-function jsonQuery($instance, $username, $password, $table, $action, $jsonInput)
-{
-	  $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=$action";
+ $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=$action";
 	  $curl = curl_init($query);
 
 	  curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -35,9 +28,12 @@ function jsonQuery($instance, $username, $password, $table, $action, $jsonInput)
 	    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonInput);
   }
-  return;
-	  
-}
+$res = getjsonQuery($instance, $username, $password, $table);
+echo $res;
+//printRecord($res, $printFields);
+
+
+
 function getjsonQuery($instance, $username, $password, $table)
 {
 	  $query = "https://dev60887.service-now.com/incident.do?JSONv2&sysparm_query=ORDERBYDESCsys_created_on";
@@ -59,9 +55,9 @@ function getjsonQuery($instance, $username, $password, $table)
 	  $response = curl_exec($curl);
 	  curl_close($curl);
 	  $json = json_decode($response);
-	 echo $json;
+	 
 	//echo $json;
- // return $json;
+ return $json;
 }
 /*function printRecord($obj, $fields){
   if(!obj || !$obj->records) return;
