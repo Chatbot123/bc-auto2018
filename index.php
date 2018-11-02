@@ -41,15 +41,18 @@ if($method == 'POST')
 		}
 		$response = curl_exec($curl);
 		curl_close($curl);
-		$json = json_decode($response);
-		$incident_no =  $json->records[0]->number;
+		$jsonoutput = json_decode($response);
+		$incident_no =  $jsonoutput->records[0]->number;
+		echo $incident_no;
 		$speech = "Thanks ".$username."! Incident Created Successfully for issue " . $sh_desc . " and your incident number is " . $incident_no;
+		
+		
+
+	}
 		$response = new \stdClass();
 		$response->fulfillmentText = $speech;
 		$response->source = "webhook";
 		//echo json_encode($response);
-
-	}
 }
 else
 {
