@@ -1,6 +1,6 @@
 <?php
 
-$method = $_SERVER['REQUEST_METHOD'];
+/*$method = $_SERVER['REQUEST_METHOD'];
 //process only when method id post
 if($method == 'POST')
 {
@@ -17,12 +17,13 @@ if($method == 'POST')
 		if(isset($json->queryResult->outputContexts[1]->parameters->name))
 		{ $username = $json->queryResult->outputContexts[1]->parameters->name; }
 
-		$sh_desc = strtolower($sh_desc);
+		$sh_desc = strtolower($sh_desc);*/
 		$instance = "dev60887";
 		$username = "admin";
 		$password = "Avik.17.jan";
 		$table = "incident";
-		$json = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":\"someone\"}";
+		//$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":\"someone\"}";
+		$jsonobj = "{\"short_description\":\"testing\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
 		$query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=insert";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -33,22 +34,22 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
-		if( $json)
+		if($jsonobj)
 		{
 			    curl_setopt($curl, CURLOPT_POST, true);
 			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-			    curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
+			    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonobj);
 		}
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$jsonoutput = json_decode($response);
 		$incident_no =  $jsonoutput->records[0]->number;
-		echo $incident_no;
-		$speech = "Thanks ".$username."! Incident Created Successfully for issue " . $sh_desc . " and your incident number is " . $incident_no;
 		
+		$speech = "Thanks ".$username."! Incident Created Successfully for issue " . $sh_desc . " and your incident number is " . $incident_no;
+		echo $speech;
 		
 
-	}
+	/*}
 		$response = new \stdClass();
 		$response->fulfillmentText = $speech;
 		$response->source = "webhook";
@@ -57,6 +58,6 @@ if($method == 'POST')
 else
 {
 	echo "Method not allowed";
-}
+}*/
 
 ?>
