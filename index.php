@@ -16,8 +16,8 @@ $json = "{\"short_description\":\"My First JSON incident\",\"priority\":\"1\",\"
 $res = jsonQuery($instance, $username, $password, $table, "insert", $filter, $json);
 //echo $res;
 
-/*$newDbServer = $res->records[0]->sys_id;
-printRecord($res, $printFields);*/
+/*$newDbServer = $res->records[0]->sys_id;*/
+printRecord($res, $printFields);
 
 
 
