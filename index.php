@@ -5,7 +5,7 @@ $instance = "dev60887";
 $username = "admin";
 $password = "Avik.17.jan";
 $table = "incident";
-$printFields = array("short_description", "priority","Caller_id");
+//$printFields = array("short_description", "priority","Caller_id");
 
 
 
@@ -13,7 +13,7 @@ $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":
 
 jsonQuery($instance, $username, $password, $table, "insert", $json);
 $res = getjsonQuery($instance, $username, $password, $table);
-printRecord($res, $printFields);
+//printRecord($res, $printFields);
 
 
 function jsonQuery($instance, $username, $password, $table, $action, $jsonInput)
@@ -40,7 +40,7 @@ function jsonQuery($instance, $username, $password, $table, $action, $jsonInput)
 }
 function getjsonQuery($instance, $username, $password, $table)
 {
-	  $query = "https://$instance.service-now.com/api/now/table/$table?sysparm_query=ORDERBYDESCsys_created_on&sysparm_fields=number%2Csys_created_on&sysparm_limit=1";
+	  $query = "https://dev60887.service-now.com/incident.do?JSONv2&sysparm_query=ORDERBYDESCsys_created_on";
 	  
 	  $curl = curl_init($query);
 
@@ -59,13 +59,11 @@ function getjsonQuery($instance, $username, $password, $table)
 	  $response = curl_exec($curl);
 	  curl_close($curl);
 	  $json = json_decode($response);
-	  if ($json != "" && property_exists($json, 'error')){
-	    throw new ErrorException("SN JSON Error: {$json->error}");
-	  }
+	 echo $json;
 	//echo $json;
-  return $json;
+ // return $json;
 }
-function printRecord($obj, $fields){
+/*function printRecord($obj, $fields){
   if(!obj || !$obj->records) return;
   foreach($obj->records as $rec){
     foreach($rec as $key => $value){
@@ -73,5 +71,5 @@ function printRecord($obj, $fields){
     }
     echo "<BR>";
   }
-}
+}*/
 ?>
