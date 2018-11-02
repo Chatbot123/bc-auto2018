@@ -22,7 +22,7 @@ $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":
 	  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 	  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   
-  if( $jsonInput )
+  if( $json)
   {
 	    curl_setopt($curl, CURLOPT_POST, true);
 	    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
