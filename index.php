@@ -11,7 +11,7 @@ $printFields = array("short_description", "priority","assigned_to");
 //Create a MySQL Database Server
 //echo "<br><br>Create a MySQL Database Server<br>";
 $filter = "";
-$json = "{\"short_description\":\"My First JSON incident\",\"priority\":\"1\",\"assigned_to\":\"IT\"}";
+$json = "{\"short_description\":\"My phone is rebooting again and again\",\"priority\":\"1\",\"assigned_to\":\"someone\"}";
 
 $res = jsonQuery($instance, $username, $password, $table, "insert", $filter, $json);
 //echo $res;
