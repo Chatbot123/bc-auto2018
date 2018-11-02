@@ -58,7 +58,7 @@ function getjsonQuery($instance, $username, $password, $table)
 	  curl_close($curl);
 	  $json = json_decode($response);
 	 
-	//echo $json;
+	echo $json;
  return $json;
 }
 /*function printRecord($obj, $fields){
