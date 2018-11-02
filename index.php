@@ -26,7 +26,7 @@ $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":
   {
 	    curl_setopt($curl, CURLOPT_POST, true);
 	    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-	    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonInput);
+	    curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
   }
 $res = getjsonQuery($instance, $username, $password, $table);
 echo $res;
