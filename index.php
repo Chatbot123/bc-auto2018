@@ -65,6 +65,7 @@ function jsonQuery($instance, $username, $password, $table, $action, $encodedQue
 	  if ($json != "" && property_exists($json, 'error')){
 	    throw new ErrorException("SN JSON Error: {$json->error}");
 	  }
+	echo $json;
   return $json;
 }
 
