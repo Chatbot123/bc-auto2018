@@ -28,9 +28,13 @@ $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":
 	    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $json);
   }
-curl_exec($curl);
-curl_close($curl);
-$res = getjsonQuery($instance, $username, $password, $table);
+ $response = curl_exec($curl);
+	  curl_close($curl);
+	  $json = json_decode($response);
+	 
+	echo $json->result.number;
+
+/*$res = getjsonQuery($instance, $username, $password, $table);
 echo $res;
 //printRecord($res, $printFields);
 
