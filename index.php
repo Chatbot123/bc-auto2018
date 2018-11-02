@@ -8,40 +8,17 @@ $table = "incident";
 $printFields = array("short_description", "priority","Caller_id");
 
 
-//Create a MySQL Database Server
-//echo "<br><br>Create a MySQL Database Server<br>";
-$filter = "";
+
 $json = "{\"short_description\":\"My phone is rebooting again and again\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
 
-$res = jsonQuery($instance, $username, $password, $table, "insert", $filter, $json);
-//echo $res;
-
-/*$newDbServer = $res->records[0]->sys_id;*/
+jsonQuery($instance, $username, $password, $table, "insert", $json);
+$res = getjsonQuery($instance, $username, $password, $table);
 printRecord($res, $printFields);
 
 
-
-
-
-
-
-
-/*
-
-// List MySQL Databases
-echo "<br><br>List current MySQL Databases<br>";
-$filter = "type%3DMySQL";
-$json = "";
-$res = jsonQuery($instance, $username, $password, $table, "getRecords", $filter, $json);
-printRecord($res, $printFields);
-*/
-
-
-
-function jsonQuery($instance, $username, $password, $table, $action, $encodedQuery, $jsonInput)
+function jsonQuery($instance, $username, $password, $table, $action, $jsonInput)
 {
 	  $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=$action";
-	  if($encodedQuery) $query .= "&sysparm_query=$encodedQuery"; 
 	  $curl = curl_init($query);
 
 	  curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -59,16 +36,35 @@ function jsonQuery($instance, $username, $password, $table, $action, $encodedQue
 	    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonInput);
   }
   
+	  
+}
+function getjsonQuery($instance, $username, $password, $table)
+{
+	  $query = "https://$instance.service-now.com/api/now/table/$table?sysparm_query=ORDERBYDESCsys_created_on&sysparm_fields=number%2Csys_created_on&sysparm_limit=1";
+	  
+	  $curl = curl_init($query);
+
+	  curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+	  curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
+	  curl_setopt($curl, CURLOPT_VERBOSE, 1);
+	  curl_setopt($curl, CURLOPT_HEADER, false);
+	  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+	  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+	  curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($curl, CURLOPT_POST, true);
+	  curl_setopt($curl, CURLOPT_HTTPHEADER, array("Accept: application/json"));
+	  
+ 
+  
 	  $response = curl_exec($curl);
 	  curl_close($curl);
 	  $json = json_decode($response);
 	  if ($json != "" && property_exists($json, 'error')){
 	    throw new ErrorException("SN JSON Error: {$json->error}");
 	  }
-	echo $json;
+	//echo $json;
   return $json;
 }
-
 function printRecord($obj, $fields){
   if(!obj || !$obj->records) return;
   foreach($obj->records as $rec){
