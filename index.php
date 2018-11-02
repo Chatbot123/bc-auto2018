@@ -5,14 +5,14 @@ $instance = "dev60887";
 $username = "admin";
 $password = "Avik.17.jan";
 $table = "incident";
-//$printFields = array("sys_id", "name", "type", "version");
+$printFields = array("short_description", "priority");
 
 //Create a MySQL Database Server
 echo "<br><br>Create a MySQL Database Server<br>";
 $filter = "";
 $json = '{"short_description":"My First JSON incident","priority":"1"}';
 $res = jsonQuery($instance, $username, $password, $table, "insert", $filter, $json);
-echo $res;
+//echo $res;
 
 /*$newDbServer = $res->records[0]->sys_id;
 printRecord($res, $printFields);*/
@@ -66,7 +66,7 @@ function jsonQuery($instance, $username, $password, $table, $action, $encodedQue
   return $json;
 }
 
-/*function printRecord($obj, $fields){
+function printRecord($obj, $fields){
   if(!obj || !$obj->records) return;
   foreach($obj->records as $rec){
     foreach($rec as $key => $value){
@@ -74,5 +74,5 @@ function jsonQuery($instance, $username, $password, $table, $action, $encodedQue
     }
     echo "<BR>";
   }
-}*/
+}
 ?>
