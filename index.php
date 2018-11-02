@@ -51,7 +51,7 @@ if($method == 'POST')
 		$incident_no =  $jsonoutput->records[0]->number;
 		
 		$speech = "Thanks ".$name."! Incident Created Successfully for issue " . $sh_desc . " and your incident number is " . $incident_no;
-		echo $speech;
+		//echo $speech;
 		
 
 	}
