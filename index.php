@@ -5,13 +5,13 @@ $instance = "dev60887";
 $username = "admin";
 $password = "Avik.17.jan";
 $table = "incident";
-$printFields = array("short_description", "priority","Caller");
+$printFields = array("short_description", "priority","Caller_id");
 
 
 //Create a MySQL Database Server
 //echo "<br><br>Create a MySQL Database Server<br>";
 $filter = "";
-$json = "{\"short_description\":\"My phone is rebooting again and again\",\"priority\":\"1\",\"Caller\":\"someone\"}";
+$json = "{\"short_description\":\"My phone is rebooting again and again\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
 
 $res = jsonQuery($instance, $username, $password, $table, "insert", $filter, $json);
 //echo $res;
