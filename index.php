@@ -1,6 +1,6 @@
 <?php
 
-/*$method = $_SERVER['REQUEST_METHOD'];
+$method = $_SERVER['REQUEST_METHOD'];
 //process only when method id post
 if($method == 'POST')
 {
@@ -17,9 +17,9 @@ if($method == 'POST')
 		if(isset($json->queryResult->outputContexts[1]->parameters->name))
 		{ $name = $json->queryResult->outputContexts[1]->parameters->name; }
 
-		$sh_desc = strtolower($sh_desc);*/
-		$sh_desc = "Testing";
-		$name = "someone";
+		$sh_desc = strtolower($sh_desc);
+		//$sh_desc = "Testing";
+		//$name = "someone";
 		$instance = "dev60887";
 		$username = "admin";
 		$password = "Avik.17.jan";
@@ -54,7 +54,7 @@ if($method == 'POST')
 		echo $speech;
 		
 
-	/*}
+	}
 		$response = new \stdClass();
 		$response->fulfillmentText = $speech;
 		$response->source = "webhook";
@@ -63,6 +63,6 @@ if($method == 'POST')
 else
 {
 	echo "Method not allowed";
-}*/
+}
 
 ?>
