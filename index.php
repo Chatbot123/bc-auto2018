@@ -5,12 +5,14 @@ $instance = "dev60887";
 $username = "admin";
 $password = "Avik.17.jan";
 $table = "incident";
-$printFields = array("short_description", "priority");
+$printFields = array("short_description", "priority","assigned_to");
+
 
 //Create a MySQL Database Server
-echo "<br><br>Create a MySQL Database Server<br>";
+//echo "<br><br>Create a MySQL Database Server<br>";
 $filter = "";
-$json = '{"short_description":"My First JSON incident","priority":"1"}';
+$json = "{\"short_description\":\"My First JSON incident\",\"priority\":\"1\",\"assigned_to\":\"IT\"}";
+
 $res = jsonQuery($instance, $username, $password, $table, "insert", $filter, $json);
 //echo $res;
 
