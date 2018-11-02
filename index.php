@@ -73,7 +73,7 @@ function jsonQuery($instance, $username, $password, $table, $action, $encodedQue
     foreach($rec as $key => $value){
       if( in_array($key, $fields ) ) echo "[$key]: $value; ";
     }
-    echo "<BR>";*/
+    echo "<BR>";
   }
-}
+}*/
 ?>
