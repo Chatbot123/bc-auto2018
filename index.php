@@ -25,7 +25,10 @@ if($method == 'POST')
 		$password = "Avik.17.jan";
 		$table = "incident";
 		//$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":\"someone\"}";
-		$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":$name}";
+		$jsonobj = array('short_description' => $sh_desc);
+             	$jsonobj = json_encode($jsonobj);	
+
+		//$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":$name}";
 		$query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=insert";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
