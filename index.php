@@ -11,7 +11,7 @@ $table = "incident";
 
 $json = "{\"short_description\":\"testing for automatic creation\",\"priority\":\"1\",\"Caller_id\":\"someone\"}";
 
- $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=$action";
+ $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=insert";
 	  $curl = curl_init($query);
 
 	  curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
