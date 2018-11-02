@@ -40,7 +40,7 @@ printRecord($res, $printFields);
 
 function jsonQuery($instance, $username, $password, $table, $action, $encodedQuery, $jsonInput)
 {
-	  $query = "https://$instance.service-now.com/$table.do?JSON&sysparm_action=$action";
+	  $query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=$action";
 	  if($encodedQuery) $query .= "&sysparm_query=$encodedQuery"; 
 	  $curl = curl_init($query);
 
