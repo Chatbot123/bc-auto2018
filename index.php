@@ -55,7 +55,7 @@ if($method == 'POST')
 		
 
 	}
-	if($json->queryResult->intent->displayName=='Get_Status_ticket')
+	if($json->queryResult->intent->displayName=='Get_Status_ticket'||$json->queryResult->intent->displayName=='Get_Status_ticket - ticketinputagain')
 	{
 		
 		if(isset($json->queryResult->parameters->Raisedate))
