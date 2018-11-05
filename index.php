@@ -101,8 +101,19 @@ if($method == 'POST')
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$jsonoutput = json_decode($response);
-		$speech= $jsonoutput;
-		//$incident_no =  $jsonoutput->records[0]->number;
+		$assigned_to =  $jsonoutput->records[0]->assigned_to;
+		$number =  $jsonoutput->records[0]->number;
+		$state =  $jsonoutput->records[0]->state;
+		$sys_updated_by = $jsonoutput->records[0]->sys_updated_by;
+		$sys_updated_on = $jsonoutput->records[0]->sys_updated_on;
+		
+		
+		if($assigned_to=='')
+		{
+			$assigned_to = 'no one';
+		}
+		$speech = "Incident ".$number." is currently assigned to ".$assigned_to.". Current status of  the incident is ".$state." . This incident was last updated by ".$sys_updated_by." on ".$sys_updated_on;
+				
 		
 		//$speech = "Thanks ".$name."! Incident Created Successfully for issue " . $sh_desc . " and your incident number is " . $incident_no;
 		//echo $speech;
