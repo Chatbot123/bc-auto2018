@@ -114,7 +114,7 @@ if($method == 'POST')
 			$assigned_to = 'no one';
 		}
 		$speech = "Incident ".$number." is currently assigned to ".$assigned_to.". Current status of  the incident is ".$state." . This incident was last updated by ".$sys_updated_by." on ".$sys_updated_on;
-		$speech .= "The incident was raised for the issue ".$short_description;
+		$speech .= " The incident was raised for the issue ".$short_description;
 				
 		
 		//$speech = "Thanks ".$name."! Incident Created Successfully for issue " . $sh_desc . " and your incident number is " . $incident_no;
