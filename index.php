@@ -57,30 +57,20 @@ if($method == 'POST')
 	}
 	if($json->queryResult->intent->displayName=='Get_Status_ticket')
 	{
-		if(isset($json->queryResult->queryText))
-		{ $sh_desc = $json->queryResult->queryText; }
-
+		
 		if(isset($json->queryResult->parameters->Raisedate))
 		{ $Raisedate = $json->queryResult->parameters->Raisedate; }
 		
 		if(isset($json->queryResult->parameters->Ticketno))
 		{ $Ticketno = $json->queryResult->parameters->Ticketno; }
-		
+		str_pad($Ticketno, 7, '0', STR_PAD_LEFT);
 		$Raisedate = substr($Raisedate, 0, 10);
-		
-		
-		$sh_desc = strtolower($sh_desc);
-		//$sh_desc = "Testing";
-		//$name = "someone";
+			
 		$instance = "dev60887";
 		$username = "admin";
 		$password = "Avik.17.jan";
 		$table = "incident";
-		//$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":\"someone\"}";
-		//$jsonobj = array('short_description' => $sh_desc);
-             	//$jsonobj = json_encode($jsonobj);	
-
-		//$jsonobj = "{\"short_description\":$sh_desc,\"priority\":\"1\",\"Caller_id\":$name}";
+		
 		$query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=getRecords&sysparm_query=numberENDSWITH".$Ticketno."^sys_created_onSTARTSWITH".$Raisedate;
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
@@ -113,7 +103,7 @@ if($method == 'POST')
 			$dis_state = "New";
 			break;
 		    case 2:
-			$dis_state = "In progess";
+			$dis_state = "In Progress";
 			break;
 		    case 3:
 			$dis_state = "On Hold";
