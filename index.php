@@ -92,12 +92,6 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 
-		/*if($jsonobj)
-		{
-			    curl_setopt($curl, CURLOPT_POST, true);
-			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-			    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonobj);
-		}*/
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$jsonoutput = json_decode($response);
@@ -113,7 +107,24 @@ if($method == 'POST')
 		{
 			$assigned_to = 'no one';
 		}
-		$speech = "Incident ".$number." is currently assigned to ".$assigned_to.". Current status of  the incident is ".$state." . This incident was last updated by ".$sys_updated_by." on ".$sys_updated_on;
+		
+		switch($state){
+		    case 1:
+			$dis_state = "New";
+			break;
+		    case 2:
+			$dis_state = "In progess";
+			break;
+		    case 3:
+			$dis_state = "On Hold";
+			break;
+		    case 7:
+			$dis_state = "Closed";
+			break;
+		   
+		}
+
+		$speech = "Incident ".$number." is currently assigned to ".$assigned_to.". Current status of  the incident is ".$dis_state." . This incident was last updated by ".$sys_updated_by." on ".$sys_updated_on;
 		$speech .= " The incident was raised for the issue ".$short_description;
 				
 		
