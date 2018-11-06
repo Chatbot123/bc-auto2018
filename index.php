@@ -130,7 +130,7 @@ if($method == 'POST')
 		if(isset($json->queryResult->parameters->to_email))
 		{ $to_email = $json->queryResult->parameters->to_email; }
 	 	$mail = new PHPMailer;
-    require 'bc-auto2018/PHPMailer/src/class.PHPMailer.php';
+    require_once '/bc-auto2018/PHPMailer/src/class.PHPMailer.php';
 		$hostname= "smtp.gmail.com";
 		$sender = "intelligentmachine2018@gmail.com";
 		$mail_password="Centurylink2018";
@@ -140,13 +140,13 @@ if($method == 'POST')
 		$Body = "Testing mail from bot";
 		
 	    //Enable SMTP debugging.	
-	    $mail->SMTPDebug = 0;
+	    $mail->SMTPDebug = 2;
 	    //Set PHPMailer to use SMTP.
-	    $mail->isSMTP();
+	   // $mail->isSMTP();
 	    //Set SMTP host name                          
 	    $mail->Host = $hostname;
 	    //Set this to true if SMTP host requires authentication to send email
-	    $mail->SMTPAuth = true;
+	  //  $mail->SMTPAuth = true;
 	    //Provide username and password     
 	    $mail->Username = $sender;
 	    $mail->Password = $mail_password;
