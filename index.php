@@ -129,28 +129,48 @@ if($method == 'POST')
 	{
 		if(isset($json->queryResult->parameters->to_email))
 		{ $to_email = $json->queryResult->parameters->to_email; }
-	//require 'PHPMailer/class.phpmailer.php';
-	$mail = new PHPMailer(); // create a new object
-	$mail->IsSMTP(); // enable SMTP
-	$mail->SMTPDebug = 1; // debugging: 1 = errors and messages, 2 = messages only
-	$mail->SMTPAuth = true; // authentication enabled
-	$mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
-	$mail->Host = "smtp.gmail.com";
-	$mail->Port = 465; // or 587
-	$mail->IsHTML(true);
-	$mail->Username = "intelligentmachine2018@gmail.com";
-	$mail->Password = "Centurylink2018";
-	$mail->SetFrom($to_email);
-	$mail->Subject = "Test";
-	$mail->Body = "hello";
-	$mail->AddAddress($to_email);
+	 	$mail = new PHPMailer;
+    
+		$hostname= "smtp.gmail.com";
+		$sender = "intelligentmachine2018@gmail.com";
+		$mail_password="Centurylink2018";
+		$sender_name = "CTLI_BOT";
+		$to = $to_email;
+		$Subject = "Test mail";
+		$Body = "Testing mail from bot";
+		
+	    //Enable SMTP debugging.	
+	    $mail->SMTPDebug = 0;
+	    //Set PHPMailer to use SMTP.
+	    $mail->isSMTP();
+	    //Set SMTP host name                          
+	    $mail->Host = $hostname;
+	    //Set this to true if SMTP host requires authentication to send email
+	    $mail->SMTPAuth = true;
+	    //Provide username and password     
+	    $mail->Username = $sender;
+	    $mail->Password = $mail_password;
+	    //If SMTP requires TLS encryption then set it
+	    $mail->SMTPSecure = "ssl";
+	    //Set TCP port to connect to 
+	    $mail->Port = 465;
+	    $mail->From = $sender;  
+	    $mail->FromName = $sender_name;
+	    $mail->addAddress($to);
+	    $mail->isHTML(true);
+	    $mail->Subject = $Subject;
+	    $mail->Body = $Body;
+	    $mail->AltBody = "This is the plain text version of the email content";
 
-	 if(!$mail->Send()) {
+
+	 if(!$mail->Send()) 
+	 {
 	    $speech= "Mailer Error: " . $mail->ErrorInfo;
-	 } else {
+	 } else
+	 {
 	    $speech= "Message has been sent";
 	 }
-	}
+}
 	//--------------------
 		$res = new \stdClass();
 		$res->fulfillmentText = $speech;
