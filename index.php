@@ -129,7 +129,7 @@ if($method == 'POST')
 	{
 		if(isset($json->queryResult->parameters->to_email))
 		{ $to_email = $json->queryResult->parameters->to_email; }
-	 	$mail = new PHPMailer;
+	 	/*$mail = new PHPMailer;
     require_once '/bc-auto2018/PHPMailer/src/class.PHPMailer.php';
 		$hostname= "smtp.gmail.com";
 		$sender = "intelligentmachine2018@gmail.com";
@@ -160,16 +160,26 @@ if($method == 'POST')
 	    $mail->isHTML(true);
 	    $mail->Subject = $Subject;
 	    $mail->Body = $Body;
-	    $mail->AltBody = "This is the plain text version of the email content";
-
-
-	 if(!$mail->Send()) 
+	    $mail->AltBody = "This is the plain text version of the email content";*/
+//-----------------------
+		$to = $to_email;
+		$subject = 'This a test';
+		$message = '<h1>Hi there.</h1><p>Thanks for testing!</p>';
+		$headers = "From : CTLI <intelligentmachine2018@gmail.com>\r\n";
+		$headers .= "Reply-To: rachnarke@gmail\r\n";
+		$headers .= "Content-type: text/html\r\n";
+		
+		$chk = mail($to, $subject, $message, $headers);
+		
+	 if(!$chk) 
 	 {
-	    $speech= "Mailer Error: " . $mail->ErrorInfo;
+	    $speech= "Mailer Error: ";
 	 } else
 	 {
 	    $speech= "Message has been sent";
 	 }
+
+//----------------------		
 }
 	//--------------------
 		$res = new \stdClass();
