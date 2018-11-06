@@ -130,7 +130,7 @@ if($method == 'POST')
 		if(isset($json->queryResult->parameters->to_email))
 		{ $to_email = $json->queryResult->parameters->to_email; }
 	 	$mail = new PHPMailer;
-    
+    require 'bc-auto2018/PHPMailer/src/class.PHPMailer.php';
 		$hostname= "smtp.gmail.com";
 		$sender = "intelligentmachine2018@gmail.com";
 		$mail_password="Centurylink2018";
