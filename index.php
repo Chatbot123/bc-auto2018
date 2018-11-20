@@ -232,7 +232,9 @@ if($method == 'POST')
 			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{ \"sysparm_quantity\": \"1\",\"variables\":{ }}");
 		}
 		$response = curl_exec($curl);
+		
 		curl_close($curl);
+		echo $response;
 	//	$jsonoutput = json_decode($response);
 	//	$item_name =  $jsonoutput->result->items[0]->item_name;
 		
@@ -251,6 +253,7 @@ if($method == 'POST')
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$jsonoutput = json_decode($response);
+		echo $jsonoutput;
 		$request_num =  $jsonoutput->result->request_number;
 		$speech = "Your Request number is ".$request_num." Please attach approval of your Line Manager to the ticket, so that your account will be unlocked.";
  
