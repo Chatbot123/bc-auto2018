@@ -254,7 +254,7 @@ if($method == 'POST')
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$jsonoutput = json_decode($response);
-		//echo $jsonoutput;
+		echo $jsonoutput;
 		$request_num =  $jsonoutput->result->request_number;
 		$speech = "Your Request number is ".$request_num." Please attach approval of your Line Manager to the ticket, so that your account will be unlocked";
  
