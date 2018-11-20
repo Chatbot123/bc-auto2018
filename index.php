@@ -231,10 +231,10 @@ if($method == 'POST')
 			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
 			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{\"sysparm_quantity\": \"1\",\"variables\":{}}");
 		}
-		curl_exec($curl);
+		$response=curl_exec($curl);
 		
 		curl_close($curl);
-		//echo $response;
+		echo $response;
 		//$jsonoutput = json_decode($response);
 		//echo $jsonoutput;
 	//	$item_name =  $jsonoutput->result->items[0]->item_name;
