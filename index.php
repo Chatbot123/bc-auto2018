@@ -224,7 +224,7 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
+		$jsonobj=1;
 		if($jsonobj)
 		{
 			    curl_setopt($curl, CURLOPT_POST, true);
@@ -233,8 +233,8 @@ if($method == 'POST')
 		}
 		$response = curl_exec($curl);
 		$response = simplexml_load_string($response); // where $xml_string is the XML data you'd like to use (a well-formatted XML string). If retrieving from an external source, you can use file_get_contents to retrieve the data and populate this variable.
-$response = json_encode($response); // convert the XML string to JSON
-//$array = json_decode($json,TRUE); // convert the JSON-encoded string to a PHP variable
+		$response = json_encode($response); // convert the XML string to JSON
+		//$array = json_decode($json,TRUE); // convert the JSON-encoded string to a PHP variable
 		curl_close($curl);
 		//echo $response;
 		$jsonoutput = json_decode($response);
@@ -256,7 +256,7 @@ $response = json_encode($response); // convert the XML string to JSON
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$jsonoutput = json_decode($response);
-		//echo $jsonoutput;
+		echo $jsonoutput;
 		$request_num =  $jsonoutput->result->request_number;
 		$speech = "Your Request number is ".$request_num." Please attach approval of your Line Manager to the ticket, so that your account will be unlocked";
  
