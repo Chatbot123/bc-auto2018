@@ -229,7 +229,7 @@ if($method == 'POST')
 		{
 			    curl_setopt($curl, CURLOPT_POST, true);
 			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{ \"sysparm_quantity\": \"1\",\"variables\":{ }}");
+			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{\"sysparm_quantity\": \"1\",\"variables\":{ }}");
 		}
 		$response = curl_exec($curl);
 		
