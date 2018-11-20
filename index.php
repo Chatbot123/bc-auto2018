@@ -232,10 +232,13 @@ if($method == 'POST')
 			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{\"sysparm_quantity\": \"1\",\"variables\":{ }}");
 		}
 		$response = curl_exec($curl);
-		
+		$response = simplexml_load_string($response); // where $xml_string is the XML data you'd like to use (a well-formatted XML string). If retrieving from an external source, you can use file_get_contents to retrieve the data and populate this variable.
+$response = json_encode($response); // convert the XML string to JSON
+//$array = json_decode($json,TRUE); // convert the JSON-encoded string to a PHP variable
 		curl_close($curl);
 		//echo $response;
-	//	$jsonoutput = json_decode($response);
+		$jsonoutput = json_decode($response);
+		echo $jsonoutput;
 	//	$item_name =  $jsonoutput->result->items[0]->item_name;
 		
 		
@@ -255,7 +258,7 @@ if($method == 'POST')
 		$jsonoutput = json_decode($response);
 		//echo $jsonoutput;
 		$request_num =  $jsonoutput->result->request_number;
-		$speech = "Your Request number is ".$request_num." Please attach approval of your Line Manager to the ticket, so that your account will be unlocked.";
+		$speech = "Your Request number is ".$request_num." Please attach approval of your Line Manager to the ticket, so that your account will be unlocked";
  
 		
 
