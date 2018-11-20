@@ -215,7 +215,7 @@ if($method == 'POST')
 		$password = "Avik.17.jan";
 		$table = "incident";
 		
-		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/d292507adb3123002e6ff36f29961911/add_to_cart";
+		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/d292507adb3123002e6ff36f29961911/order_now";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
@@ -234,13 +234,13 @@ if($method == 'POST')
 		$response=curl_exec($curl);
 		
 		curl_close($curl);
-		echo $response;
+		//echo $response;
 		//$jsonoutput = json_decode($response);
 		//echo $jsonoutput;
 	//	$item_name =  $jsonoutput->result->items[0]->item_name;
 		
 		
-		$query = "https://dev60887.service-now.com/api/sn_sc/v1/servicecatalog/cart/submit_order";
+		/*$query = "https://dev60887.service-now.com/api/sn_sc/v1/servicecatalog/cart/submit_order";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
@@ -253,7 +253,7 @@ if($method == 'POST')
 
 		$response = curl_exec($curl);
 		echo $response;
-		curl_close($curl);
+		curl_close($curl);*/
 		$jsonoutput = json_decode($response);
 		//echo $jsonoutput;
 		$request_num =  $jsonoutput->result->request_number;
