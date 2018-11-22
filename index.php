@@ -288,15 +288,18 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-		$jsonvar = array('line_manager_name' => $line_manager_name
-				  'effective_date'=> $effective_date);
+		$jsonvar = array('sysparm_quantity'=> '1'
+				 'variables'=>	array('line_manager_name' => $line_manager_name
+				  			'effective_date'=> $effective_date
+						     )
+				);
              	$jsonvar = json_encode($jsonvar);
 		$jsonobj=1;
 		if($jsonobj)
 		{
 			    curl_setopt($curl, CURLOPT_POST, true);
 			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{\"sysparm_quantity\": \"1\",\"variables\":$jsonvar}");
+			    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonvar);
 		}
 		$response=curl_exec($curl);
 		curl_close($curl);
