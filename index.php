@@ -213,7 +213,7 @@ if($method == 'POST')
 		$instance = "dev60887";
 		$username = "admin";
 		$password = "Avik.17.jan";
-		$table = "incident";
+		
 		
 		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/d292507adb3123002e6ff36f29961911/order_now";
 		$curl = curl_init($query);
@@ -262,6 +262,49 @@ if($method == 'POST')
 		
 
 	}
+	if($json->queryResult->intent->displayName=='SCT_DeactivateAccount - no - yes')
+	{
+		
+		if(isset($json->queryResult->parameters->line_manager))
+		{ $line_manager_name = $json->queryResult->parameters->line_manager; }
+		
+		if(isset($json->queryResult->parameters->deactivation_date))
+		{ $effective_date = $json->queryResult->parameters->deactivation_date; }
+		$effective_date=substr($effective_date, 0, 10);
+		
+		
+			
+		$instance = "dev60887";
+		$username = "admin";
+		$password = "Avik.17.jan";
+		
+		
+		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/a383cf67db3123002e6ff36f299619a9/order_now";
+		$curl = curl_init($query);
+		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+		curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
+		curl_setopt($curl, CURLOPT_VERBOSE, 1);
+		curl_setopt($curl, CURLOPT_HEADER, false);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$jsonvar = array('line_manager_name' => $line_manager_name
+				  'effective_date]=> $effective_date);
+             	$jsonvar = json_encode($jsonobj);
+		$jsonobj=1;
+		if($jsonobj)
+		{
+			    curl_setopt($curl, CURLOPT_POST, true);
+			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{\"sysparm_quantity\": \"1\",\"variables\":$jsonvar}");
+		}
+		$response=curl_exec($curl);
+		curl_close($curl);
+		$jsonoutput = json_decode($response);
+		$request_num =  $jsonoutput->result->request_number;
+		$speech = "Your Request number is ".$request_num." Please attach approval of your Line Manager to the ticket, so that your account will be unlocked";
+ 	}
+	
 	//--------------------
 	if($json->queryResult->intent->displayName=='SENDMAIL')
 	{
