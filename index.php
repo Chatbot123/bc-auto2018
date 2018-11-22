@@ -289,8 +289,8 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$jsonvar = array('line_manager_name' => $line_manager_name
-				  'effective_date]=> $effective_date);
-             	$jsonvar = json_encode($jsonobj);
+				  'effective_date'=> $effective_date);
+             	$jsonvar = json_encode($jsonvar);
 		$jsonobj=1;
 		if($jsonobj)
 		{
