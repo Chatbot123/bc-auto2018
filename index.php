@@ -225,8 +225,8 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$jsonvar = array('sysparm_quantity'=> '1',
-				 'variables'=>	array('line_manager_name' => $line_manager_name,
-				  			'effective_date'=> $effective_date
+				 'variables'=>	array('line_manager_name' => $line_manager
+				  			
 						     )
 				);
              	$jsonvar = json_encode($jsonvar);
