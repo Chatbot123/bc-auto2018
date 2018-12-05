@@ -8,7 +8,7 @@ if($method == 'POST')
 	$json = json_decode($requestBody);
 
 //Setup
-
+//https://dev55842.service-now.com/api/sn_sc/v1/servicecatalog/items/0bd1963f4f02230017ab4f00a310c7bd/order_now
 	if($json->queryResult->intent->displayName=='Raise_ticket_intent - GetnameGetissue')
 	{
 		//if(isset($json->queryResult->queryText))
@@ -23,9 +23,9 @@ if($method == 'POST')
 		$sh_desc = strtolower($sh_desc);
 		//$sh_desc = "Testing";
 		//$name = "someone";
-		$instance = "dev60887";
+		$instance = "dev55842";
 		$username = "admin";
-		$password = "Avik.17.jan";
+		$password = "Centurylink@2018";
 		$table = "incident";
 		
 		$jsonobj = array('short_description' => $sh_desc);
@@ -95,9 +95,9 @@ if($method == 'POST')
 		str_pad($Ticketno, 7, '0', STR_PAD_LEFT);
 		$Raisedate = substr($Raisedate, 0, 10);
 			
-		$instance = "dev60887";
+		$instance = "dev55842";
 		$username = "admin";
-		$password = "Avik.17.jan";
+		$password = "Centurylink@2018";
 		$table = "incident";
 		
 		$query = "https://$instance.service-now.com/$table.do?JSONv2&sysparm_action=getRecords&sysparm_query=numberENDSWITH".$Ticketno."^sys_created_onSTARTSWITH".$Raisedate;
@@ -161,9 +161,9 @@ if($method == 'POST')
 		//{"incident_state":"7","close_notes":"Resolved by Caller","close_code":"Closed/Resolved by Caller","caller_id":"System Administrator"}
 		//$sh_desc = "Testing";
 		//$name = "someone";
-		$instance = "dev60887";
+		$instance = "dev55842";
 		$username = "admin";
-		$password = "Avik.17.jan";
+		$password = "Centurylink@2018";
 		$table = "incident";
 		
 		/*$jsonobj = array(
@@ -210,12 +210,12 @@ if($method == 'POST')
 		
 		
 			
-		$instance = "dev60887";
+		$instance = "dev55842";
 		$username = "admin";
-		$password = "Avik.17.jan";
+		$password = "Centurylink@2018";
 		
 		
-		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/d292507adb3123002e6ff36f29961911/order_now";
+		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/0bd1963f4f02230017ab4f00a310c7bd/order_now";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
@@ -224,12 +224,19 @@ if($method == 'POST')
 		curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$jsonvar = array('sysparm_quantity'=> '1',
+				 'variables'=>	array('line_manager_name' => $line_manager_name,
+				  			'effective_date'=> $effective_date
+						     )
+				);
+             	$jsonvar = json_encode($jsonvar);
+		
 		$jsonobj=1;
 		if($jsonobj)
 		{
 			    curl_setopt($curl, CURLOPT_POST, true);
 			    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
-			    curl_setopt($curl, CURLOPT_POSTFIELDS, "{\"sysparm_quantity\": \"1\",\"variables\":{}}");
+			    curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonvar);
 		}
 		$response=curl_exec($curl);
 		
@@ -240,7 +247,7 @@ if($method == 'POST')
 	//	$item_name =  $jsonoutput->result->items[0]->item_name;
 		
 		
-		/*$query = "https://dev60887.service-now.com/api/sn_sc/v1/servicecatalog/cart/submit_order";
+		/*$query = "https://dev55842.service-now.com/api/sn_sc/v1/servicecatalog/cart/submit_order";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
@@ -274,9 +281,9 @@ if($method == 'POST')
 		
 		
 			
-		$instance = "dev60887";
+		$instance = "dev55842";
 		$username = "admin";
-		$password = "Avik.17.jan";
+		$password = "Centurylink@2018";
 		
 		
 		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/a383cf67db3123002e6ff36f299619a9/order_now";
