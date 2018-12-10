@@ -286,7 +286,7 @@ if($method == 'POST')
 		$password = "Centurylink@2018";
 		
 		
-		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/a383cf67db3123002e6ff36f299619a9/order_now";
+		$query = "https://$instance.service-now.com/api/sn_sc/v1/servicecatalog/items/e4d504654f12230017ab4f00a310c706/order_now";
 		$curl = curl_init($query);
 		curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 		curl_setopt($curl, CURLOPT_USERPWD, "$username:$password");
