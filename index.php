@@ -23,9 +23,9 @@ if($method == 'POST')
 		$sh_desc = strtolower($sh_desc);
 		//$sh_desc = "Testing";
 		//$name = "someone";
-		$instance = "dev55842";
+		$instance = "dev66576";
 		$username = "admin";
-		$password = "Centurylink@2018";
+		$password = "Ctli@234";
 		$table = "incident";
 		
 		$jsonobj = array('short_description' => $sh_desc);
