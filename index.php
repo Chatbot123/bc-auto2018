@@ -23,7 +23,7 @@ if($method == 'POST')
 		$sh_desc = strtolower($sh_desc);
 		//$sh_desc = "Testing";
 		//$name = "someone";
-		$instance = "dev66576";
+		$instance = "dev62236";
 		$username = "admin";
 		$password = "Ctli@234";
 		$table = "incident";
@@ -95,7 +95,7 @@ if($method == 'POST')
 		str_pad($Ticketno, 7, '0', STR_PAD_LEFT);
 		$Raisedate = substr($Raisedate, 0, 10);
 			
-		$instance = "dev66576";
+		$instance = "dev62236";
 		$username = "admin";
 		$password = "Ctli@234";
 		$table = "incident";
@@ -161,7 +161,7 @@ if($method == 'POST')
 		//{"incident_state":"7","close_notes":"Resolved by Caller","close_code":"Closed/Resolved by Caller","caller_id":"System Administrator"}
 		//$sh_desc = "Testing";
 		//$name = "someone";
-		$instance = "dev66576";
+		$instance = "dev62236";
 		$username = "admin";
 		$password = "Ctli@234";
 		$table = "incident";
@@ -210,7 +210,7 @@ if($method == 'POST')
 		
 		
 			
-		$instance = "dev66576";
+		$instance = "dev62236";
 		$username = "admin";
 		$password = "Ctli@234";
 		
@@ -281,7 +281,7 @@ if($method == 'POST')
 		
 		
 			
-		$instance = "dev66576";
+		$instance = "dev62236";
 		$username = "admin";
 		$password = "Ctli@234";
 		
